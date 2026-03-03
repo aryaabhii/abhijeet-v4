@@ -1,0 +1,4 @@
+export const hireMe = {
+  title: "Why hire me?",
+  paragraph: `With over 3 years of professional experience in building scalable ERP, B2B, and B2C web applications, I bring a rare blend of full-stack engineering and performance-focused UI development to every project. I specialize in crafting innovative digital experiences using Laravel and Next.js, ensuring that every line of code is optimized for SEO and seamless user interaction. Beyond technical execution, my approach is rooted in digital craftsmanship—transforming complex business challenges into modern, user-friendly solutions that leave a lasting impression through both functional excellence and creative design.`,
+};

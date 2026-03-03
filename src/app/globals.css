@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  /* Light Mode Colors */
+  --background: #ffffff;
+  --foreground: #282c33;
+  --accent: #c778dd;
+  --card-bg: #f9f9f9;
+  --border: rgba(171, 178, 191, 0.2);
+  
+}
+
+[data-theme='dark'] {
+  /* Dark Mode Colors (Original) */
+  --background: #282c33;
+  --foreground: #abb2bf;
+  --accent: #c778dd;
+  --card-bg: #2d323b;
+  --border: #444c56;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-card: var(--card-bg);
+  --color-border: var(--border);
+  --font-mono: "Fira Code", "Courier New", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Typewriter Animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent);
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent); }
+}
+
+/* https://dribbble.com/shots/22185691-Personal-Portfolio-Website-Design */
