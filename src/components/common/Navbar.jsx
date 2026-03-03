@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "../ThemeToggle";
@@ -16,9 +16,21 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Fix for mobile sticky: Prevent scrolling when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMenuOpen]);
+
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-accent/20">
+      {/* 1. Changed to 'fixed' instead of 'sticky' for better mobile reliability.
+          2. Added 'left-0' and 'right-0' to ensure width is consistent.
+      */}
+      <header className="fixed top-0 left-0 right-0 z-[100] w-full bg-background/80 backdrop-blur-md border-b border-accent/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-between items-center py-5 gap-4">
             {/* Logo */}
@@ -51,16 +63,12 @@ const Navbar = () => {
                           <span className="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-accent opacity-0 group-hover:opacity-100 transition-opacity"></span>
 
                           <div className="flex items-center gap-1.5">
-                            <span className="text-accent group-hover:animate-pulse">
-                              [
-                            </span>
+                            <span className="text-accent group-hover:animate-pulse">[</span>
                             <span className="relative">
                               {item.name}
                               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300"></span>
                             </span>
-                            <span className="text-accent group-hover:animate-pulse">
-                              ]
-                            </span>
+                            <span className="text-accent group-hover:animate-pulse">]</span>
                           </div>
                         </button>
                       ) : (
@@ -89,8 +97,9 @@ const Navbar = () => {
 
               {/* Mobile Toggle */}
               <button
-                className="md:hidden text-accent p-1 border border-accent/20 cursor-pointer"
+                className="md:hidden text-accent p-1 border border-accent/20 cursor-pointer z-[110]"
                 onClick={toggleMenu}
+                aria-label="Toggle Menu"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -100,9 +109,11 @@ const Navbar = () => {
 
         {/* --- MOBILE MENU DRAWER --- */}
         <div
-          className={`fixed inset-0 top-[73px] z-40 w-full h-[calc(100vh-73px)] bg-background md:hidden transition-transform duration-500 ease-in-out border-t border-accent/10 ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`fixed inset-0 top-0 z-[105] w-full h-screen bg-background md:hidden transition-transform duration-500 ease-in-out ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         >
-          <div className="flex flex-col h-full p-8 font-mono">
+          <div className="flex flex-col h-full p-8 pt-24 font-mono">
             <p className="text-accent/30 text-xs mb-8 uppercase tracking-[0.3em]">
               System_Navigation
             </p>
@@ -116,7 +127,7 @@ const Navbar = () => {
                         setIsContactOpen(true);
                         setIsMenuOpen(false);
                       }}
-                      className="text-foreground/60 hover:text-accent"
+                      className="text-foreground/60 hover:text-accent flex items-center gap-2"
                     >
                       <span className="text-accent">#</span>
                       {item.name}
@@ -125,7 +136,9 @@ const Navbar = () => {
                     <Link
                       href={item.path}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`flex items-center gap-2 ${pathname === item.path ? "text-accent translate-x-2" : "text-foreground/60"}`}
+                      className={`flex items-center gap-2 transition-transform ${
+                        pathname === item.path ? "text-accent translate-x-2" : "text-foreground/60"
+                      }`}
                     >
                       <span className="text-accent">#</span>
                       {item.name}
@@ -135,7 +148,6 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Bottom Section */}
             <div className="mt-auto">
               <div className="mb-8">
                 <p className="text-[10px] text-accent/30 uppercase tracking-widest mb-6">
@@ -148,7 +160,6 @@ const Navbar = () => {
                       href={social.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title={social.name}
                       className="text-foreground/40 hover:text-accent transition-all hover:-translate-y-1 active:scale-90"
                     >
                       {social.icon}
@@ -165,6 +176,9 @@ const Navbar = () => {
           </div>
         </div>
       </header>
+
+      {/* Spacer to prevent content from going under the fixed header */}
+      <div className="h-[73px] w-full md:h-[80px]"></div>
 
       <ContactModal
         isOpen={isContactOpen}
