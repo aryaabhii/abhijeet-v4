@@ -294,7 +294,7 @@ const Projects = ({ showAll = false }) => {
                 onClick={closeModal}
                 className="text-foreground/40 hover:text-accent text-sm font-mono cursor-pointer flex items-center gap-2"
               >
-                [ close_session ]
+                [ Close ]
               </button>
             </div>
           </div>
