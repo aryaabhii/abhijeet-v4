@@ -1,18 +1,18 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 import about from "@/data/about";
 import { Download, MapPin } from "lucide-react";
 
 const About = () => {
-  const pathname = usePathname(); 
-  const isAboutPage = pathname === "/about"; 
+  const pathname = usePathname();
+  const isAboutPage = pathname === "/about-me";
 
   // If not on About page, show only first 2 paragraphs
-  const displayDescription = isAboutPage 
-    ? about.description 
-    : about.description.slice(0, 2); 
+  const displayDescription = isAboutPage
+    ? about.description
+    : about.description.slice(0, 2);
 
   return (
     <section className="py-20 flex flex-col md:flex-row gap-10 items-center">
@@ -38,7 +38,7 @@ const About = () => {
 
         <div className="flex flex-wrap gap-4 mt-8">
           {!isAboutPage && (
-            <Link href="/about">
+            <Link href="/about-me">
               <button className="px-6 py-2 border border-accent text-foreground hover:bg-accent/10 transition-all font-mono text-sm group cursor-pointer">
                 Read more{" "}
                 <span className="inline-block transition-transform group-hover:translate-x-1">
