@@ -9,7 +9,7 @@ import VideoGallery from "@/components/home/VideoList";
 
 export default function Home( ) {
   return (
-    <main className="pb-20">
+    <>
       <Hero />
       <Quote />
       <Journey />
@@ -18,6 +18,6 @@ export default function Home( ) {
       <About />
       <Contact /> 
       <VideoGallery />
-    </main>
+    </>
   );
 }

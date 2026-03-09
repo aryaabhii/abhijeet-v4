@@ -23,13 +23,12 @@ export default function RootLayout({ children }) {
         <Navbar />
         <Social />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* PAGE CONTENT */}
-          <main className="min-h-[70vh]">
+          <main>
             {children}
           </main>
-        <FloatingActions />  
-        <Footer />
+          <Footer />
         </div>
+        <FloatingActions />
       </body>
     </html>
   );
