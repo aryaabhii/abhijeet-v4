@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "../ThemeToggle";
 import ContactModal from "./ContactModal";
 import navData from "@/data/nav";
-import socialData from "@/data/social";  
+import socialData from "@/data/social";
 import { Menu, X, Terminal } from "lucide-react";
 
 const Navbar = () => {
@@ -74,11 +74,10 @@ const Navbar = () => {
                       ) : (
                         <Link
                           href={item.path}
-                          className={`transition-colors group flex items-center gap-0.5 ${
-                            isActive
+                          className={`transition-colors group flex items-center gap-0.5 ${isActive
                               ? "text-foreground font-bold underline decoration-accent decoration-2 underline-offset-4"
                               : "text-foreground/60 hover:text-accent"
-                          }`}
+                            }`}
                         >
                           <span
                             className={`text-accent transition-opacity ${isActive ? "opacity-100" : "opacity-40 group-hover:opacity-100"}`}
@@ -109,9 +108,8 @@ const Navbar = () => {
 
         {/* --- MOBILE MENU DRAWER --- */}
         <div
-          className={`fixed inset-0 top-0 z-[105] w-full h-screen bg-background md:hidden transition-transform duration-500 ease-in-out ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed inset-0 top-0 z-[105] w-full h-screen bg-background md:hidden transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="flex flex-col h-full p-8 pt-24 font-mono">
             <p className="text-accent/30 text-xs mb-8 uppercase tracking-[0.3em]">
@@ -136,9 +134,8 @@ const Navbar = () => {
                     <Link
                       href={item.path}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`flex items-center gap-2 transition-transform ${
-                        pathname === item.path ? "text-accent translate-x-2" : "text-foreground/60"
-                      }`}
+                      className={`flex items-center gap-2 transition-transform ${pathname === item.path ? "text-accent translate-x-2" : "text-foreground/60"
+                        }`}
                     >
                       <span className="text-accent">#</span>
                       {item.name}

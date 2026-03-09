@@ -16,7 +16,7 @@ export default function ContactModal({ isOpen, onClose }) {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isClosing, setIsClosing] = useState(false); 
+  const [isClosing, setIsClosing] = useState(false);
   const [errors, setErrors] = useState({});
 
   // Reset closing state when modal opens
@@ -28,7 +28,7 @@ export default function ContactModal({ isOpen, onClose }) {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 300); 
+    }, 300);
   };
 
   const handleChange = (e) => {
@@ -87,19 +87,19 @@ export default function ContactModal({ isOpen, onClose }) {
   return (
     <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 ${isClosing ? 'pointer-events-none' : ''}`}>
       {/* Backdrop */}
-      <div 
+      <div
         className={`absolute inset-0 bg-background/80 backdrop-blur-sm ${isClosing ? 'animate-fade-out' : 'animate-fade-in'}`}
         onClick={handleClose}
       />
 
       {/* Modal Content */}
       <div className={`relative w-full max-w-3xl bg-card border border-accent/30 shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh] ${isClosing ? 'animate-scale-out' : 'animate-scale-in'}`}>
-        
+
         {/* HUD Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-background/50 shrink-0">
           <span className="font-mono text-sm uppercase tracking-widest text-accent flex items-center gap-2">
             <Terminal size={18} className="animate-pulse" />
-            Contact_Establishment_Protocol
+            Contact_Establishment
           </span>
           <button onClick={handleClose} className="text-foreground/40 hover:text-accent cursor-pointer transition-all p-1 hover:rotate-90 duration-300">
             <X size={24} />
@@ -109,7 +109,7 @@ export default function ContactModal({ isOpen, onClose }) {
         {/* Scrollable Content Area */}
         <div className="overflow-y-auto p-6 md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
-            
+
             {/* Left Info: Contact Details */}
             <div className="hidden md:block col-span-2 space-y-8 border-r border-border/50 pr-8">
               <h3 className="text-xl font-mono text-foreground font-bold underline decoration-accent decoration-2 underline-offset-8">
@@ -117,19 +117,19 @@ export default function ContactModal({ isOpen, onClose }) {
               </h3>
               <div className="space-y-6 font-mono text-sm text-foreground/60">
                 <div className="flex items-start gap-4">
-                  <MapPin size={20} className="text-accent shrink-0" /> 
+                  <MapPin size={20} className="text-accent shrink-0" />
                   <span>New Delhi, India</span>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Phone size={20} className="text-accent shrink-0" /> 
+                  <Phone size={20} className="text-accent shrink-0" />
                   <a href="tel:+919973278402" className="hover:text-accent transition-colors">+91 99732 78402</a>
                 </div>
                 <div className="flex items-start gap-4">
-                  <Mail size={20} className="text-accent shrink-0" /> 
+                  <Mail size={20} className="text-accent shrink-0" />
                   <a href="mailto:aryaabhi84@gmail.com" className="hover:text-accent transition-colors break-all">aryaabhi84@gmail.com</a>
                 </div>
               </div>
-              
+
               <div className="pt-4 opacity-20 font-mono text-[10px] space-y-1">
                 <p>&gt; STATUS: ONLINE</p>
                 <p>&gt; ENCRYPTION: ACTIVE</p>
@@ -157,7 +157,7 @@ export default function ContactModal({ isOpen, onClose }) {
                   placeholder={errors.subject || "Subject_Line*"}
                   className={`bg-background border ${errors.subject ? 'border-red-500' : 'border-border'} p-3 text-sm font-mono outline-none focus:border-accent w-full transition-all`}
                 />
-                
+
                 <input
                   type="email"
                   name="email"
@@ -184,7 +184,7 @@ export default function ContactModal({ isOpen, onClose }) {
                   className={`bg-background border ${errors.message ? 'border-red-500' : 'border-border'} p-3 text-sm font-mono outline-none focus:border-accent w-full h-32 md:h-36 resize-none transition-all`}
                 />
 
-                <button 
+                <button
                   type="submit"
                   disabled={isLoading}
                   className="w-full py-4 bg-accent text-background font-mono text-sm uppercase tracking-widest hover:bg-accent/90 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50 font-bold"

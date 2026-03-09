@@ -69,7 +69,7 @@ const About = () => {
           <img
             src={about.imageSrc}
             alt={about.name}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100 scale-105 group-hover:scale-100 cursor-pointer"
           />
 
           <div className="absolute inset-0 w-full h-[2px] bg-accent/40 shadow-[0_0_15px_var(--accent)] animate-[scan_4s_linear_infinite] pointer-events-none z-20"></div>
