@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { X, Send, Terminal, Mail, MapPin, Phone } from 'lucide-react';
 
 
-const API_ENDPOINT = `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`;
+const API_ENDPOINT = "/api/contact";
 
 export default function ContactModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -188,9 +188,9 @@ export default function ContactModal({ isOpen, onClose }) {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-4 bg-accent text-background font-mono text-sm uppercase tracking-widest hover:bg-accent/90 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50 font-bold"
+                  className="w-full py-4 bg-accent text-background font-mono text-sm uppercase tracking-widest hover:bg-accent/90 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50 font-bold cursor-pointer"
                 >
-                  {isLoading ? "Transmitting_Data..." : "Send_Packet"}
+                  {isLoading ? "Transmitting_Data..." : "Send_Message"}
                   {!isLoading && <Send size={18} />}
                 </button>
               </form>

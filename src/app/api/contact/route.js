@@ -2,31 +2,31 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req) {
-     try {
-          const data = await req.json();
-          const { name, email, subject, phone, message } = data;
+  try {
+    const data = await req.json();
+    const { name, email, subject, phone, message } = data;
 
-          // Basic Validation check
-          if (!name || !email || !message) {
-               return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
-          }
+    // Basic Validation check
+    if (!name || !email || !message) {
+      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
+    }
 
-          const transporter = nodemailer.createTransport({
-               host: process.env.MAIL_HOST,
-               port: Number(process.env.MAIL_PORT),
-               secure: process.env.MAIL_SECURE === "true",
-               auth: {
-                    user: process.env.MAIL_USER,
-                    pass: process.env.MAIL_PASS,
-               },
-          });
+    const transporter = nodemailer.createTransport({
+      host: process.env.MAIL_HOST,
+      port: Number(process.env.MAIL_PORT),
+      secure: process.env.MAIL_SECURE === "true",
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+      },
+    });
 
-          const mailOptions = {
-               from: `"Portfolio" <${process.env.MAIL_USER}>`,
-               to: process.env.MAIL_USER,
-               replyTo: email,
-               subject: `[CONTACT_FORM] ${subject}`,
-               html: `
+    const mailOptions = {
+      from: `"Portfolio HUD" <${process.env.MAIL_USER}>`,
+      to: process.env.MAIL_USER,
+      replyTo: email,
+      subject: `[CONTACT_FORM] ${subject}`,
+      html: `
         <!DOCTYPE html>
         <html>
           <head>
@@ -44,7 +44,7 @@ export async function POST(req) {
           <body>
             <div class="container">
               <div class="header">
-                <h1 style="margin:0; font-size: 24px; letter-spacing: 2px;">NEW INQUIRY</h1>
+                <h1 style="margin:0; font-size: 24px; letter-spacing: 2px;">NEW_INQUIRY</h1>
               </div>
               <div class="content">
                 <div class="field-box">
@@ -72,14 +72,14 @@ export async function POST(req) {
           </body>
         </html>
       `,
-          };
+    };
 
-          await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
-          return NextResponse.json({ message: "Data transmitted successfully" }, { status: 200 });
+    return NextResponse.json({ message: "Data transmitted successfully" }, { status: 200 });
 
-     } catch (error) {
-          console.error("Critical System Error:", error);
-          return NextResponse.json({ message: "Transmission failed" }, { status: 500 });
-     }
+  } catch (error) {
+    console.error("Critical System Error:", error);
+    return NextResponse.json({ message: "Transmission failed" }, { status: 500 });
+  }
 }
