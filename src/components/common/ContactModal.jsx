@@ -4,7 +4,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { X, Send, Terminal, Mail, MapPin, Phone } from 'lucide-react';
 
-const API_ENDPOINT = 'https://abhijeet-kumar.vercel.app/api/contact-us';
+
+const API_ENDPOINT = `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`;
 
 export default function ContactModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
