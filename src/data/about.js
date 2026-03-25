@@ -9,7 +9,7 @@ const about = {
     "I am passionate about continuous learning and researching new technologies to solve complex problems through digital craftsmanship.",
     "Beyond coding, I am dedicated to educating others in the field of innovation and technology to leave a lasting impression with every project."
   ],
-  cvLink: "/assets/doc/abhijeet-cv.pdf",
+  cvLink: "/assets/doc/Abhijeet_Kumar_Full_Stack_Developer.pdf",
   imageSrc: "/assets/images/about.jpg",
 };
 
